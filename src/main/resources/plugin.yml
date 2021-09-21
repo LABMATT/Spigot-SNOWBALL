@@ -1,0 +1,8 @@
+name: Snowball
+version: '${project.version}'
+main: labmatt.space.Snowball
+api-version: 1.17
+prefix: LMSB
+authors: [ Matthew, Lewington ]
+description: A plugin that Recrates the classic snowball game mode
+website: www.labmatt.space
