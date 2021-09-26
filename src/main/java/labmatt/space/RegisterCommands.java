@@ -1,6 +1,6 @@
 package labmatt.space;
 
-import Commands.NewLobby;
+import Commands.NewMatch;
 
 public class RegisterCommands {
 
@@ -9,6 +9,6 @@ public class RegisterCommands {
     RegisterCommands(Snowball snowball) {
         this.plugin = snowball;
 
-        new NewLobby(plugin);
+        new NewMatch(plugin);
     }
 }
