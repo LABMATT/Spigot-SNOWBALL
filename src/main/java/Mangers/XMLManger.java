@@ -2,8 +2,18 @@ package Mangers;
 
 import labmatt.space.Snowball;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.NotDirectoryException;
 
 public class XMLManger {
@@ -60,9 +70,53 @@ public class XMLManger {
         return this;
     }
 
-
-    public void readXML()
+    // Reads XML document you have made, much of this code was taken from https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm
+    public String readXML(String perantNode, String subNodes) throws Exception
     {
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document doc = documentBuilder.parse(this.file);
+            doc.normalizeDocument();
 
+            // Get an element by that name of perant node then loop though to get the inner nodes.
+            NodeList nList = doc.getElementsByTagName(perantNode);
+
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+                Node nNode = nList.item(temp);
+                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    return eElement.getElementsByTagName(subNodes).item(0).getTextContent();
+                }
+            }
+
+            throw new Exception("No Perant node or sub node by that name.");
     }
+
+
+    // This returns the attribute of a XML element.
+    public String readXMLat(String perantNode, String attribute) throws Exception {
+
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        Document doc = documentBuilder.parse(this.file);
+        doc.normalizeDocument();
+
+        // Get an element by that name of perant node then loop though to get the inner nodes.
+        NodeList nList = doc.getElementsByTagName(perantNode);
+
+        for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node nNode = nList.item(temp);
+            System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+                return eElement.getAttribute(attribute);
+            }
+        }
+
+        throw new Exception("No node or attribute found by that name.");
+    }
+
 }

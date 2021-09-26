@@ -22,6 +22,8 @@ public class NewMatch implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
+        System.out.println("done!");
+
         // Checks the command name
         if(command.getName().equalsIgnoreCase("newmatch"))
         {
