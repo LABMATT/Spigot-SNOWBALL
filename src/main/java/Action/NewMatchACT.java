@@ -20,6 +20,7 @@ public class NewMatchACT {
             XMLManger xmlManger = new XMLManger();
             try {
                 System.out.println("OH YOUR YML IS: " + xmlManger.getXML("C:/Users/Matt/Desktop/Snowball/plugins/test.xml").readXML("test", "piss"));
+                xmlManger.createXML("C:/Users/Matt/Desktop/Snowball/plugins/piss.xml", new String[]{"hello", "matt"});
 
             } catch (Exception e) {
                 e.printStackTrace();

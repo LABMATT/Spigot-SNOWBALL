@@ -2,15 +2,16 @@ package Mangers;
 
 import labmatt.space.Snowball;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -117,6 +118,51 @@ public class XMLManger {
         }
 
         throw new Exception("No node or attribute found by that name.");
+    }
+
+    // Creates a new XML struture.
+    public XMLManger createXML(String filelocname, String[] ele){
+
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.newDocument();
+
+            // root element
+            Element rootElement = doc.createElement("root");
+            doc.appendChild(rootElement);
+
+            for (String newele: ele) {
+                // add other elements
+                Element element = doc.createElement(newele);
+                rootElement.appendChild(element);
+            }
+
+            // write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            File nxmlf = new File(filelocname);
+            StreamResult result = new StreamResult(nxmlf);
+            transformer.transform(source, result);
+
+            this.file = nxmlf;
+
+            // Output to console for testing
+            StreamResult consoleResult = new StreamResult(System.out);
+            transformer.transform(source, consoleResult);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
+
+    public XMLManger editXML(String name, String val)
+    {
+
+        return this;
     }
 
 }
