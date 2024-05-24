@@ -161,6 +161,39 @@ public class XMLManger {
 
     public XMLManger editXML(String name, String val)
     {
+        try {
+            File inputFile = this.file;
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(inputFile);
+            Node supercar = doc.getElementsByTagName("").item(0);
+
+            // loop the supercar child node
+            NodeList list = supercar.getChildNodes();
+
+            for (int temp = 0; temp < list.getLength(); temp++) {
+                Node node = list.item(temp);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) node;
+                    if (name.equals(eElement.getNodeName())) {
+
+                        eElement.setTextContent(val);
+                    }
+                }
+            }
+
+            // write the content on console
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+
+            File nxmlf = this.file;
+            StreamResult result = new StreamResult(nxmlf);
+            transformer.transform(source, result);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return this;
     }
