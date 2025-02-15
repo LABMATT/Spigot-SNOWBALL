@@ -1,0 +1,4 @@
+name: Snowball
+version: '1.0-SNAPSHOT'
+main: space.labmatt.snowball
+api-version: '1.21'

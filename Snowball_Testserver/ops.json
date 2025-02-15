@@ -1,0 +1,14 @@
+[
+  {
+    "uuid": "5bb70df7-cb85-4411-968b-d2913edd58fd",
+    "name": "LabMatt",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "752e6966-19de-4f99-8a98-4b40a073df82",
+    "name": "Cubed_Box",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  }
+]
