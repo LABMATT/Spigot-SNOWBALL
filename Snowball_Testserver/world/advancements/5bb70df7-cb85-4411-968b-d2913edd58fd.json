@@ -236,5 +236,17 @@
     },
     "done": true
   },
+  "minecraft:recipes/redstone/redstone": {
+    "criteria": {
+      "has_redstone_block": "2025-02-16 19:37:59 +1100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/dispenser": {
+    "criteria": {
+      "has_bow": "2025-02-16 20:00:30 +1100"
+    },
+    "done": true
+  },
   "DataVersion": 4189
 }
