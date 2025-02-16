@@ -6,5 +6,7 @@ import java.util.List;
 public class Game {
 
     public String gameName = "";
-    public List<String> players = new ArrayList<>();
+    // Lobby location
+    // spawn locations
+    // timer.
 }

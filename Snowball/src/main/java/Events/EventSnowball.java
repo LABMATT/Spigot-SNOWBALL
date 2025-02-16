@@ -27,6 +27,7 @@ public class EventSnowball implements Listener {
      * Make sure its a snowball,
      * Make sure there players,
      * Make sure player is not killing them self.
+     *
      * @param event
      */
     @EventHandler
@@ -57,6 +58,21 @@ public class EventSnowball implements Listener {
         // Check to see if a player has shot them self.
         if (playerShooter == playerHit) {
 
+            //return;
+        }
+
+
+        SnowballPlayer gameMangerPlayerShooter = gameManager.getPlayer(playerShooter);
+        SnowballPlayer gameManagerPlayerHit = gameManager.getPlayer(playerHit);
+
+        // If the player has been killed in 5 seconds
+        int cooldown = 5000;
+        boolean spawnProtectionEnabled = true;
+        long timePassedSinceRespawn = Math.subtractExact(System.currentTimeMillis(), gameManagerPlayerHit.respawnTime);
+        if (timePassedSinceRespawn < cooldown && spawnProtectionEnabled) {
+
+            long timeRemaing = Math.subtractExact(cooldown / 1000, timePassedSinceRespawn / 1000);
+            playerShooter.sendMessage(ChatColor.RED + "This player is spawn protected for " + timeRemaing + " seconds.");
             return;
         }
 
@@ -66,11 +82,11 @@ public class EventSnowball implements Listener {
         playerShooter.playSound(location, "block.note_block.harp", 3.0F, 2.0F);
         playerHit.playSound(location, "entity.player.attack.strong", 3.0F, 2.0F);
 
-        SnowballPlayer gameMangerPlayerShooter = gameManager.getPlayer(playerShooter);
-        SnowballPlayer gameManagerPlayerHit = gameManager.getPlayer(playerHit);
 
         gameManagerPlayerHit.deaths++;
         gameMangerPlayerShooter.kills++;
+
+        gameManagerPlayerHit.respawnTime = System.currentTimeMillis();
 
         // Notify the player who threw the snowball who they hit.
         playerShooter.sendMessage(ChatColor.GRAY + "You powned " + playerHit.getName() + ". Kills: " + gameMangerPlayerShooter.kills + " Deaths: " + gameManagerPlayerHit.deaths);
