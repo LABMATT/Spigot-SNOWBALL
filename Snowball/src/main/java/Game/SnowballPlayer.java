@@ -10,5 +10,6 @@ public class SnowballPlayer {
     public int kills  = 0;
     public int totalThrows = 0;
     public String gameName = "";
-    public long respawnTime = System.currentTimeMillis();
+    public long respawnTime = 0;
+
 }

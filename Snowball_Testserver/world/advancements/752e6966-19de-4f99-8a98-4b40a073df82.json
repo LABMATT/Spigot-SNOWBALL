@@ -8,6 +8,7 @@
   "minecraft:adventure/adventuring_time": {
     "criteria": {
       "minecraft:cold_ocean": "2025-02-15 23:57:51 +1100",
+      "minecraft:frozen_ocean": "2025-02-17 14:53:48 +1100",
       "minecraft:forest": "2025-02-16 00:00:04 +1100",
       "minecraft:stony_shore": "2025-02-15 23:57:47 +1100",
       "minecraft:plains": "2025-02-15 23:57:36 +1100"
@@ -476,6 +477,18 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/white_bed": {
+    "criteria": {
+      "has_white_wool": "2025-02-16 00:46:26 +1100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/white_carpet": {
+    "criteria": {
+      "has_white_wool": "2025-02-16 00:46:26 +1100"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/light_blue_bed": {
     "criteria": {
       "has_light_blue_wool": "2025-02-16 00:46:27 +1100"
@@ -494,15 +507,21 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/white_bed": {
+  "minecraft:recipes/decorations/orange_bed": {
     "criteria": {
-      "has_white_wool": "2025-02-16 00:46:26 +1100"
+      "has_orange_wool": "2025-02-17 14:52:04 +1100"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/white_carpet": {
+  "minecraft:recipes/decorations/orange_banner": {
     "criteria": {
-      "has_white_wool": "2025-02-16 00:46:26 +1100"
+      "has_orange_wool": "2025-02-17 14:52:04 +1100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/orange_carpet": {
+    "criteria": {
+      "has_orange_wool": "2025-02-17 14:52:04 +1100"
     },
     "done": true
   },
